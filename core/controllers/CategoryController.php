@@ -22,4 +22,30 @@ class CategoryController extends Controller
     {
         View::render('category/create');
     }
+
+    public function store()
+    {
+        $name = $_POST['name'] ?? null;
+        $description = $_POST['description'] ?? null;
+
+        $category = new Category();
+        $category->name = $name;
+        $category->description = $description;
+        $category->save(); //добавляет строку в таблицу category
+        $this->redirect('/categories');
+    }
+
+    public function update() //сделать его таким же универсальным как и метод save()
+    {
+        $name = $_POST['name'] ?? null;
+        $description = $_POST['description'] ?? null;
+        $id = $_POST['id'] ?? null;
+
+        $category = Category::find($id);
+
+        $category->name = $name;
+        $category->description = $description;
+        $category->update(); //обновляет строку в таблицу category
+        $this->redirect('/categories');
+    }
 }
