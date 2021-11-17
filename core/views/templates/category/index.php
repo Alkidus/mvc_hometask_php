@@ -1,5 +1,5 @@
 <h1 class="text-center">Categories</h1>
-
+<a href="/categories/create" class="btm btm-primary">Add Category</a>
 <table class="table">
     <thead>
         <tr>

@@ -18,4 +18,8 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $this->dump($category);
     }
+    public function create()
+    {
+        View::render('category/create');
+    }
 }
