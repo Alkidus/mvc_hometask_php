@@ -17,6 +17,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $this->dump($category);
+        View::render('category/edit');
     }
     public function create()
     {
@@ -35,17 +36,34 @@ class CategoryController extends Controller
         $this->redirect('/categories');
     }
 
-    public function update() //сделать его таким же универсальным как и метод save()
+    public function updateCategory($id) //сделать его таким же универсальным как и метод save()
+    {
+        // $name = $_POST['name'] ?? null;
+        // $description = $_POST['description'] ?? null;
+        // $id = $_POST['id'] ?? null;
+
+        $category = Category::find($id);
+        $name = $category->name;
+        $description = $category->description;
+        // $description = $_POST['description'] ?? null;
+        // $id = $_POST['id'] ?? null;
+        echo 'name= ' . $name . '<br>' . $description . '<br>' . $id . '<br>';
+        View::render('category/edit', compact('category'));
+        // $category->name = $name;
+        // $category->description = $description;
+        // $category->update(); //обновляет строку в таблицу category
+        //$this->redirect('/categories');
+    }
+    public function update2()
     {
         $name = $_POST['name'] ?? null;
         $description = $_POST['description'] ?? null;
         $id = $_POST['id'] ?? null;
 
-        $category = Category::find($id);
-
+        $category = new Category();
         $category->name = $name;
         $category->description = $description;
-        $category->update(); //обновляет строку в таблицу category
-        $this->redirect('/categories');
+        $category->update($id);
+        //$this->redirect('/categories');
     }
 }

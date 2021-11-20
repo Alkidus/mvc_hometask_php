@@ -1,5 +1,5 @@
 <h1 class="text-center">Categories</h1>
-<a href="/categories/create" class="btm btm-primary">Add Category</a>
+<a href="/categories/create" class="btn btn-primary">Add Category</a>
 <table class="table">
     <thead>
         <tr>
@@ -16,7 +16,9 @@
                 <td><?= $item->name ?> </td>
                 <td><?= $item->description ?> </td>
                 <td>
-                    <a href="/categories/edit/<?= $item->id ?>" class="btn btn-warning">Edit</a>
+                    <div class="d-flex justify-contend-end">
+                        <a href="/categories/edit/<?= $item->id ?>" class="btn btn-warning me-2">Edit</a>
+                    </div>
                 </td>
             </tr>
         <?php endforeach ?>
