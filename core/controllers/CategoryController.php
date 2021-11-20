@@ -13,7 +13,7 @@ class CategoryController extends Controller
 
         View::render('category/index', compact('categories'));
     }
-    public function edit($id)
+    public function edit_old($id)
     {
         $category = Category::find($id);
         $this->dump($category);
@@ -38,23 +38,12 @@ class CategoryController extends Controller
 
     public function updateCategory($id) //сделать его таким же универсальным как и метод save()
     {
-        // $name = $_POST['name'] ?? null;
-        // $description = $_POST['description'] ?? null;
-        // $id = $_POST['id'] ?? null;
-
         $category = Category::find($id);
         $name = $category->name;
         $description = $category->description;
-        // $description = $_POST['description'] ?? null;
-        // $id = $_POST['id'] ?? null;
-        echo 'name= ' . $name . '<br>' . $description . '<br>' . $id . '<br>';
         View::render('category/edit', compact('category'));
-        // $category->name = $name;
-        // $category->description = $description;
-        // $category->update(); //обновляет строку в таблицу category
-        //$this->redirect('/categories');
     }
-    public function update2()
+    public function edit()
     {
         $name = $_POST['name'] ?? null;
         $description = $_POST['description'] ?? null;
@@ -64,6 +53,6 @@ class CategoryController extends Controller
         $category->name = $name;
         $category->description = $description;
         $category->update($id);
-        //$this->redirect('/categories');
+        $this->redirect('/categories');
     }
 }
